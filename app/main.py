@@ -13,7 +13,6 @@ sentry_sdk.init(
 )
 
 app = Flask(__name__)
-app.logger.setLevel(logging.INFO)
 
 
 @app.route("/")
