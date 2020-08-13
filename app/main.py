@@ -2,15 +2,15 @@ import logging
 
 from flask import Flask, render_template, request, url_for
 from werkzeug.utils import redirect
-import sentry_sdk
-from sentry_sdk.integrations.flask import FlaskIntegration
-
-sentry_sdk.init(
-    dsn="https://edd4e417467e4b06981d6ac08f52f8f8@o433362.ingest.sentry.io/5388300",
-    integrations=[FlaskIntegration()],
-    send_default_pii=True,
-    request_bodies="always"
-)
+# import sentry_sdk
+# from sentry_sdk.integrations.flask import FlaskIntegration
+#
+# sentry_sdk.init(
+#     dsn="https://edd4e417467e4b06981d6ac08f52f8f8@o433362.ingest.sentry.io/5388300",
+#     integrations=[FlaskIntegration()],
+#     send_default_pii=True,
+#     request_bodies="always"
+# )
 
 app = Flask(__name__)
 
