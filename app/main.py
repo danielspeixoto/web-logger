@@ -1,6 +1,6 @@
 import logging
 
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, send_file
 from werkzeug.utils import redirect
 # import sentry_sdk
 # from sentry_sdk.integrations.flask import FlaskIntegration
@@ -59,3 +59,7 @@ def redirection():
 def trigger_error():
     division_by_zero = 1 / 0
 
+
+@app.route('/loaderio-b32166ec8e8a73c17593f059c9f887ca.txt')
+def verify_load_test():
+    return send_file('loaderio.txt')
