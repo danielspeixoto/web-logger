@@ -68,11 +68,13 @@ def verify_load_test():
 
 @app.route('/lead')
 def lead():
-    # print(request.json)
-    # print(request.json["nome_do_aluno"])
-
-    url = 'https://hooks.slack.com/services/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'
-    requests.post(url, {
-        'text': "dsa"
+    print(request.json)
+    print(request.json["nome_do_aluno"])
+    print("Lead webhook")
+    url = 'https://hooks.slack.com/services/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'
+    res = requests.post(url, json={
+        'text': request.json["nome_do_aluno"]
     })
+    print(res)
+    return ''
 
