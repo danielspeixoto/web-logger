@@ -69,9 +69,9 @@ def verify_load_test():
 
 @app.route('/lead')
 def lead():
-    print(request.json)
-    print(request.json["nome_do_aluno"])
     print("Lead webhook")
+    print(request.data)
+    print(request.json["nome_do_aluno"])
     url = os.getenv('SLACK_MKT_WEBHOOK', "")
     if url == "":
         print("No webhook supplied")
