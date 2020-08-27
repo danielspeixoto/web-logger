@@ -95,6 +95,15 @@ Qualquer dúvida, pode me chamar!'''
                 "elements": [
                     {
                         "type": "mrkdwn",
+                        "text": f"*Telefone*: {phone}"
+                    }
+                ]
+            },
+            {
+                "type": "context",
+                "elements": [
+                    {
+                        "type": "mrkdwn",
                         "text": f"*Aluno*: {student}"
                     }
                 ]
