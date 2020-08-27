@@ -65,7 +65,7 @@ def verify_load_test():
     return send_file('loaderio.txt')
 
 
-@app.route('lead')
+@app.route('/lead')
 def lead():
     print(request.json)
     print(request.json["nome_do_aluno"])
