@@ -34,7 +34,7 @@ def lead():
 
     logging.warn(str(request.form["data.json"]))
     j = request.form["data.json"]
-    data = json.loads(j["data.json"])
+    data = json.loads(j)
 
     student = data["nome_do_aluno"][0]
     student_first_name = student.split()[0].lower().capitalize()
