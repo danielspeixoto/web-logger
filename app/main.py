@@ -42,7 +42,8 @@ def lead():
 
     parent = data['nome'][0]
     parent_first_name = parent.split()[0].lower().capitalize()
-    phone = "55" + data['telefone_com_ddd'][0]
+
+    email = data['email'][0]
 
     text = f'''Oi {parent_first_name}! Somos da Build, uma escola de programação para adolescentes! 🖥️
 
@@ -56,6 +57,8 @@ https://www.aulasdeprogramacao.com.br
 
 Qualquer dúvida, pode me chamar!'''
     text = urllib.parse.quote(text)
+
+    phone = "55" + data['telefone_com_ddd'][0]
     whats_link = "https://wa.me/" + phone
     whats_link_intro = whats_link + "?text=" + text
 
@@ -96,6 +99,15 @@ Qualquer dúvida, pode me chamar!'''
                     {
                         "type": "mrkdwn",
                         "text": f"*Telefone*: {phone}"
+                    }
+                ]
+            },
+            {
+                "type": "context",
+                "elements": [
+                    {
+                        "type": "mrkdwn",
+                        "text": f"*Email*: {email}"
                     }
                 ]
             },
