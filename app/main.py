@@ -30,7 +30,9 @@ def verify_load_test():
 @app.route('/lead', methods=['POST'])
 def lead():
     print("Lead webhook")
-    data = json.loads(request.json["data.json"])
+    logging.warn("Lead webhookm warn")
+    j = request.json
+    data = json.loads(j["data.json"])
 
     student = data["nome_do_aluno"][0]
     student_first_name = student.split()[0].lower().capitalize()
