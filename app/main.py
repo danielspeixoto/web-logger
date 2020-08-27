@@ -1,4 +1,5 @@
 import logging
+import os
 
 from flask import Flask, render_template, request, url_for, send_file
 from werkzeug.utils import redirect
@@ -71,7 +72,9 @@ def lead():
     print(request.json)
     print(request.json["nome_do_aluno"])
     print("Lead webhook")
-    url = 'https://hooks.slack.com/services/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'
+    url = os.getenv('SLACK_MKT_WEBHOOK', "")
+    if url == "":
+        print("No webhook supplied")
     res = requests.post(url, json={
         'text': request.json["nome_do_aluno"]
     })
