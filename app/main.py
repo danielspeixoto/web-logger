@@ -67,16 +67,15 @@ def verify_load_test():
     return send_file('loaderio.txt')
 
 
-@app.route('/lead')
+@app.route('/lead', methods=['POST'])
 def lead():
     print("Lead webhook")
-    print(request.data)
-    print(request.json["nome_do_aluno"])
+    print(request.form["nome_do_aluno"])
     url = os.getenv('SLACK_MKT_WEBHOOK', "")
     if url == "":
         print("No webhook supplied")
     res = requests.post(url, json={
-        'text': request.json["nome_do_aluno"]
+        'text': request.form["nome_do_aluno"]
     })
     print(res)
     return ''
