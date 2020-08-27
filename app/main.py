@@ -16,7 +16,6 @@ import requests
 
 app = Flask(__name__)
 
-
 @app.route("/")
 def home():
     app.logger.info("logging log")
