@@ -63,3 +63,10 @@ def trigger_error():
 @app.route('/loaderio-b32166ec8e8a73c17593f059c9f887ca.txt')
 def verify_load_test():
     return send_file('loaderio.txt')
+
+
+@app.route('lead')
+def lead():
+    print(request.json)
+    print(request.json["nome_do_aluno"])
+
