@@ -32,8 +32,8 @@ def lead():
     print("Lead webhook")
     logging.warn("Lead webhookm warn")
 
-    logging.warn(str(request.data))
-    j = request.json
+    logging.warn(str(request.form["data.json"]))
+    j = request.form["data.json"]
     data = json.loads(j["data.json"])
 
     student = data["nome_do_aluno"][0]
