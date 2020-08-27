@@ -2,6 +2,7 @@ import logging
 
 from flask import Flask, render_template, request, url_for, send_file
 from werkzeug.utils import redirect
+import requests
 # import sentry_sdk
 # from sentry_sdk.integrations.flask import FlaskIntegration
 #
@@ -69,4 +70,9 @@ def verify_load_test():
 def lead():
     print(request.json)
     print(request.json["nome_do_aluno"])
+
+    url = 'https://hooks.slack.com/services/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'
+    requests.post(url, {
+        'text': request.json["nome_do_aluno"]
+    })
 
