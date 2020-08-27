@@ -1,6 +1,7 @@
+import json
 import logging
 import os
-
+import urllib
 from flask import Flask, render_template, request, url_for, send_file
 from werkzeug.utils import redirect
 import requests
@@ -21,46 +22,6 @@ def home():
     app.logger.info("logging log")
     return 'Hello, World'
 
-
-@app.route("/json")
-def json():
-    return {
-        "hello": "world"
-    }
-
-
-@app.route("/json/")
-def json2():
-    return {
-        "hello": "world2"
-    }
-
-
-@app.route('/user/<username>')
-def get_username(username):
-    return username
-
-
-@app.route('/html')
-def get_html():
-    return render_template('hello.html')
-
-
-@app.route('/data', methods=['POST'])
-def post_data():
-    return request.args.get("key", "")
-
-
-@app.route('/redirect')
-def redirection():
-    return redirect(url_for('home'))
-
-
-@app.route('/debug-sentry')
-def trigger_error():
-    division_by_zero = 1 / 0
-
-
 @app.route('/loaderio-b32166ec8e8a73c17593f059c9f887ca.txt')
 def verify_load_test():
     return send_file('loaderio.txt')
@@ -69,12 +30,95 @@ def verify_load_test():
 @app.route('/lead', methods=['POST'])
 def lead():
     print("Lead webhook")
-    print(request.form["nome_do_aluno"])
+    data = json.loads(request.json["data.json"])
+
+    student = data["nome_do_aluno"][0]
+    student_first_name = student.split()[0].lower().capitalize()
+    student_age = data["age"][0]
+
+    parent = data['nome'][0]
+    parent_first_name = parent.split()[0].lower().capitalize()
+    phone = "55" + data['telefone_com_ddd'][0]
+
+    text = f'''Oi {parent_first_name}! Somos da Build, uma escola de programação para adolescentes! 🖥️
+
+Recebemos o cadastro do(a) {student_first_name} e vamos estar te ajudando nessa jornada! 😁
+
+O próximo passo é informar sua disponibilidade nesse site aqui pra marcarmos a aula do seu filho(a):
+https://bit.ly/AulasDeProgramacao
+
+E para mais informações sobre o curso, basta acessar:
+https://www.aulasdeprogramacao.com.br
+
+Qualquer dúvida, pode me chamar!'''
+    text = urllib.parse.quote(text)
+    whats_link = "https://wa.me/" + phone
+    whats_link_intro = whats_link + "?text=" + text
+
+    description = f"Um novo cadastro foi feito!"
+
     url = os.getenv('SLACK_MKT_WEBHOOK', "")
     if url == "":
         print("No webhook supplied")
     res = requests.post(url, json={
-        'text': request.form["nome_do_aluno"]
+        'text': description,
+        'blocks': [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": description
+                }
+            },
+            {
+                "type": "header",
+                "text": {
+                    "type": "plain_text",
+                    "text": "Contexto",
+                }
+            },
+            {
+                "type": "context",
+                "elements": [
+                    {
+                        "type": "mrkdwn",
+                        "text": f"*Responsável*: {parent}"
+                    }
+                ]
+            },
+            {
+                "type": "context",
+                "elements": [
+                    {
+                        "type": "mrkdwn",
+                        "text": f"*Aluno*: {student}"
+                    }
+                ]
+            },
+            {
+                "type": "context",
+                "elements": [
+                    {
+                        "type": "mrkdwn",
+                        "text": f"*Idade*: {student_age}"
+                    }
+                ]
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": f"<{whats_link_intro}|Iniciar Conversa>\n"
+                }
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": f"<{whats_link}|Ver mensagens>\n"
+                }
+            },
+        ]
     })
     print(res)
     return ''
