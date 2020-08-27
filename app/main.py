@@ -31,6 +31,8 @@ def verify_load_test():
 def lead():
     print("Lead webhook")
     logging.warn("Lead webhookm warn")
+
+    logging.warn(str(request.data))
     j = request.json
     data = json.loads(j["data.json"])
 
