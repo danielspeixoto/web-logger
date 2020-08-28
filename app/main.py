@@ -36,18 +36,18 @@ def lead():
     j = request.form["data.json"]
     data = json.loads(j)
 
-    student = data["nome_do_aluno"][0]
-    student_first_name = student.split()[0].lower().capitalize()
+    # student = data["nome_do_aluno"][0]
+    # student_first_name = student.split()[0].lower().capitalize()
     student_age = data["age"][0]
 
-    parent = data['nome'][0]
-    parent_first_name = parent.split()[0].lower().capitalize()
+    name = data['nome'][0]
+    first_name = name.split()[0].lower().capitalize()
 
     email = data['email'][0]
 
-    text = f'''Oi {parent_first_name}! Somos da Build, uma escola de programação para adolescentes! 🖥️
+    text = f'''Oi {first_name}! Somos da Build, uma escola de programação para adolescentes! 🖥️
 
-Recebemos o cadastro do(a) {student_first_name} e vamos estar te ajudando nessa jornada! 😁
+Recebemos o seu cadastro e vamos estar te ajudando nessa jornada! 😁
 
 O próximo passo é informar sua disponibilidade nesse site aqui pra marcarmos a aula do seu filho(a):
 https://bit.ly/AulasDeProgramacao
@@ -96,7 +96,7 @@ Tem alguma dúvida?'''
                 "elements": [
                     {
                         "type": "mrkdwn",
-                        "text": f"*Responsável*: {parent}"
+                        "text": f"*Nome*: {name}"
                     }
                 ]
             },
@@ -115,15 +115,6 @@ Tem alguma dúvida?'''
                     {
                         "type": "mrkdwn",
                         "text": f"*Email*: {email}"
-                    }
-                ]
-            },
-            {
-                "type": "context",
-                "elements": [
-                    {
-                        "type": "mrkdwn",
-                        "text": f"*Aluno*: {student}"
                     }
                 ]
             },
