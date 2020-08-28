@@ -55,7 +55,7 @@ https://bit.ly/AulasDeProgramacao
 E para mais informações sobre o curso, basta acessar:
 https://www.aulasdeprogramacao.com.br
 
-Qualquer dúvida, pode me chamar!'''
+Tem alguma dúvida?'''
     text = urllib.parse.quote(text)
 
     def phone_extraction(num):
