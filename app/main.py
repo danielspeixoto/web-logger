@@ -45,17 +45,16 @@ def lead():
 
     email = data['email'][0]
 
-    text = f'''Oi {first_name}! Somos da Build, uma escola de programação para adolescentes! 🖥️
+    next_class = "Nossa próxima aula é na segunda 16 horas, posso confirmar sua presença?\n As vagas são *LIMITADAS*"
 
-Recebemos o seu cadastro e vamos estar te ajudando nessa jornada! 😁
+    text = f'''Oi {first_name}! Somos da *Build*, uma escola de programadores! 🖥️ Recebemos o seu cadastro no nosso site!
 
-O próximo passo é informar sua disponibilidade nesse site aqui pra marcarmos a aula do seu filho(a):
-https://bit.ly/AulasDeProgramacao
+{next_class}
 
-E para mais informações sobre o curso, basta acessar:
-https://www.aulasdeprogramacao.com.br
+Mais informações no Instagram: @aulasdeprogramacao
 
-Tem alguma dúvida?'''
+Alguma dúvida?
+'''
     text = urllib.parse.quote(text)
 
     def phone_extraction(num):
