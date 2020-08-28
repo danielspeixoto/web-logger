@@ -58,7 +58,14 @@ https://www.aulasdeprogramacao.com.br
 Qualquer dúvida, pode me chamar!'''
     text = urllib.parse.quote(text)
 
-    phone = "55" + data['telefone_com_ddd'][0]
+    def phone_extraction(num):
+        phone_construction = ""
+        for c in num:
+            if c.isnumeric():
+                phone_construction += c
+        return phone_construction
+
+    phone = "55" + phone_extraction(data['telefone_com_ddd'][0])
     whats_link = "https://wa.me/" + phone
     whats_link_intro = whats_link + "?text=" + text
 
