@@ -15,6 +15,8 @@ import requests
 #     request_bodies="always"
 # )
 
+input()
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -45,9 +47,11 @@ def lead():
 
     email = data['email'][0]
 
-    next_class = "Nossa próxima aula é na *Segunda 16 horas*, posso confirmar sua presença?\nAs vagas são *LIMITADAS*"
+    next_class = "A aula é *Segunda 16 horas*, posso adicionar seu nome na lista?" \
+                 "\nAs vagas são *LIMITADAS* então é muito importante que você apareça"
 
-    text = f'''Oi {first_name}! Somos da *Build*, uma escola de programadores!🖥️\nRecebemos o seu cadastro no nosso site!
+    text = f'''Oi {first_name}! Somos da *Build*, uma escola de programadores! 🖥️
+Recebemos o seu cadastro no nosso site!
 
 {next_class}
 
