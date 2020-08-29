@@ -15,8 +15,6 @@ import requests
 #     request_bodies="always"
 # )
 
-input()
-
 app = Flask(__name__)
 
 @app.route("/")
