@@ -45,7 +45,7 @@ def lead():
 
     email = data['email'][0]
 
-    next_class = "A aula é *Segunda 16 horas*, posso adicionar seu nome na lista?" \
+    next_class = "A aula é *Terça 16 horas*, posso adicionar seu nome na lista?" \
                  "\nAs vagas são *LIMITADAS* então é muito importante que você apareça"
 
     text = f'''Oi {first_name}! Somos da *Build*, uma escola de programadores! 🖥️
