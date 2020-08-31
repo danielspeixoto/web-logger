@@ -65,6 +65,14 @@ Mais informações no Instagram: *@aulasdeprogramacao*
         for c in num:
             if c.isnumeric():
                 phone_construction += c
+        # 55 71 9 92850735
+        # 55 55 9 92850735
+        # 55 55 92850735
+        # 55 92850735
+        if len(phone_construction) > 10 and\
+                phone_construction[0] == "5" and\
+                phone_construction[1] == "5":
+            phone_construction = phone_construction[2:]
         return phone_construction
 
     phone = "55" + phone_extraction(data['telefone_com_ddd'][0])
