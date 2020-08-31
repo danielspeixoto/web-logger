@@ -56,7 +56,7 @@ Recebemos o seu cadastro no nosso site!
 
 {next_class}
 
-Mais informações no Instagram: *@aulasdeprogramacao*
+Segue a gente no Instagram *@aulasdeprogramacao* pra continuar atualizado!
 '''
     text = urllib.parse.quote(text)
 
